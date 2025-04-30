@@ -11,7 +11,20 @@
       Honda: ["Civic", "Accord", "CR-V", "Pilot"],
       Ford: ["F-150", "Escape", "Fusion", "Explorer"]
     };
-
+    
+    function selectYears(){
+        const yearSelect = document.getElementById("year");
+        const currentYear = 2025;//new Date().getFullYear();
+        const startYear = 1990;
+        for(let i = currentYear: i >= startYear; i--){
+            const option = document.createElement("option");
+            option.value = i;
+            option.text = i;
+            yearSelect.appendChild(option);
+        }
+    }   
+    window.onload = selectYears;
+    
     function updateModels() {
       const make = document.getElementById("make").value;
       const model = document.getElementById("model");
@@ -34,20 +47,6 @@
       <label for="year">Year</label>
       <select name="year" id="year" required>
         <option value="">Select year</option>
-        <script>
-            function selectYears(){
-                const yearSelect = document.getElementById("year");
-                const currentYear = new Date().getFullYear();
-                const startYear = 1990;
-                for(let i = currentYear: i >= startYear; i--){
-                    const option = document.createElement("option");
-                    option.value = i;
-                    option.text = i;
-                    yearSelect.appendChild(option);
-                }
-            }
-            window.onload = selectYears;
-        </script>
       </select>
 
       <label for="make">Make</label>
