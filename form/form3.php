@@ -1,0 +1,76 @@
+<?php
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $_SESSION['ownership'] = $_POST['ownership'];
+  $_SESSION['usage'] = $_POST['usage'];
+  $_SESSION['miles'] = $_POST['miles'];
+}
+?>
+<?php
+$maxBirthdate = date('Y-m-d', strtotime('-16 years'));
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Step 3: Driver Information</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="form-page">
+    <h1>Step 3: Driver Information</h1>
+    <form action="form4.php" method="POST">
+      <label for="first_name">First Name</label>
+      <input type="text" name="first_name" id="first_name" required>
+
+      <label for="last_name">Last Name</label>
+      <input type="text" name="last_name" id="last_name" required>
+
+      <label for="birthdate">Birthdate <small>(MM/DD/YYYY)</small></label>
+      <input
+      type="date"
+        name="birthdate"
+        id="birthdate"
+        required
+        max="<?= $maxBirthdate ?>"
+        style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; width: 100%; font-size: 1rem;"
+      >
+
+      <label for="address">Street Address</label>
+      <input type="text" name="address" id="address" required>
+
+      <label for="unit">Unit (optional)</label>
+      <input type="text" name="unit" id="unit">
+
+      <label for="city">City</label>
+      <input type="text" name="city" id="city" required>
+
+      <label for="state">State</label>
+      <select name="state" id="state" required>
+        <option value="">Select State</option>
+        <?php
+        $states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
+                   'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
+                   'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
+                   'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
+                   'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'];
+        foreach ($states as $abbr) {
+          echo "<option value=\"$abbr\">$abbr</option>";
+        }
+        ?>
+      </select>
+
+      <label for="zip">Zip Code</label>
+      <input type="text" name="zip" id="zip" required maxlength="5" pattern="\d{5}">
+
+      <div class="form-buttons">
+        <a href="../index.html" class="home-link">← Back to Home</a>
+        <a href="form2.php" class="btn">Back</a>
+        <button type="submit">Next</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

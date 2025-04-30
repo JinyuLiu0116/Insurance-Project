@@ -1,0 +1,52 @@
+<?php
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $_SESSION['credit_score'] = $_POST['credit_score'];
+  $_SESSION['student'] = $_POST['student'];
+  $_SESSION['education'] = $_POST['education'];
+  $_SESSION['license_age'] = $_POST['license_age'];
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Step 5: Driving History</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="form-page">
+    <h1>Step 5: Driving History</h1>
+    <form action="form6.php" method="POST">
+      <label for="accident">Have you had any major accidents?</label>
+      <select name="accident" id="accident" required>
+        <option value="">Select</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <label for="dui">Any DUI violations?</label>
+      <select name="dui" id="dui" required>
+        <option value="">Select</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <label for="reckless">Any reckless driving tickets?</label>
+      <select name="reckless" id="reckless" required>
+        <option value="">Select</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <div class="form-buttons">
+        <a href="../index.html" class="home-link">← Back to Home</a>
+        <a href="form4.php" class="btn">Back</a>
+        <button type="submit">Next</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<?php
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Save form1 
+  $_SESSION['year'] = $_POST['year'];
+  $_SESSION['make'] = $_POST['make'];
+  $_SESSION['model'] = $_POST['model'];
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Step 2: Ownership Info</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="form-page">
+    <h1>Step 2: Ownership & Usage</h1>
+    <form action="form3.php" method="POST">
+      <label for="ownership">Do you own, lease, or finance this vehicle?</label>
+      <select name="ownership" id="ownership" required>
+        <option value="">Select</option>
+        <option value="own">Own</option>
+        <option value="lease">Lease</option>
+        <option value="finance">Finance</option>
+      </select>
+
+      <label for="usage">What do you mainly use the car for?</label>
+      <select name="usage" id="usage" required>
+        <option value="">Select</option>
+        <option value="commuting">Commuting</option>
+        <option value="pleasure">Pleasure</option>
+        <option value="business">Business</option>
+      </select>
+
+      <label for="miles">How many miles do you drive per year?</label>
+      <input type="number" name="miles" id="miles" placeholder="e.g. 12000" required />
+
+      <div class="form-buttons">
+        <a href="../index.html" class="home-link">← Back to Home</a>
+        <a href="form1.php" class="btn">Back</a>
+        <button type="submit">Next</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!-- form1.php -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Step 1: Vehicle Info</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    const carModels = {
+      Toyota: ["Camry", "Corolla", "RAV4", "Highlander"],
+      Honda: ["Civic", "Accord", "CR-V", "Pilot"],
+      Ford: ["F-150", "Escape", "Fusion", "Explorer"]
+    };
+
+    function updateModels() {
+      const make = document.getElementById("make").value;
+      const model = document.getElementById("model");
+      model.innerHTML = '<option value="">Select model</option>';
+      if (carModels[make]) {
+        carModels[make].forEach(m => {
+          const opt = document.createElement("option");
+          opt.value = m;
+          opt.text = m;
+          model.add(opt);
+        });
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="form-page">
+    <h1>Step 1: Vehicle Info</h1>
+    <form action="form2.php" method="POST">
+      <label for="year">Year</label>
+      <select name="year" id="year" required>
+        <option value="">Select year</option>
+        <?php
+          for ($i = date("Y"); $i >= 1990; $i--) {
+            echo "<option value=\"$i\">$i</option>";
+          }
+        ?>
+      </select>
+
+      <label for="make">Make</label>
+      <select name="make" id="make" onchange="updateModels()" required>
+        <option value="">Select make</option>
+        <option value="Toyota">Toyota</option>
+        <option value="Honda">Honda</option>
+        <option value="Ford">Ford</option>
+      </select>
+
+      <label for="model">Model</label>
+      <select name="model" id="model" required>
+        <option value="">Select model</option>
+      </select>
+
+      <div class="form-buttons">
+        <a href="../index.html" class="home-link">← Back to Home</a>
+        <button type="submit">Next</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

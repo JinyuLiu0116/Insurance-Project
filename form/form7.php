@@ -1,0 +1,196 @@
+<?php
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $_SESSION['insured'] = $_POST['insured'];
+  $_SESSION['current_provider'] = $_POST['current_provider'] ?? '';
+  $_SESSION['years_insured'] = $_POST['years_insured'] ?? 0;
+  $_SESSION['monthly_payment'] = $_POST['monthly_payment'] ?? 0.00;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Step 7: Coverage Options</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .quote-option {
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        background-color:rgb(243, 241, 241);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .quote-option:hover {
+    transform: scale(1.01);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .quote-option h2 {
+        font-family: Arial, sans-serif;
+        font-size: 2em;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 0.5rem;
+        text-transform: capitalize;
+    }
+
+    .quote-option p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        color: #666;
+    }
+
+    .quote-option ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 1rem;
+        text-align: left;
+    }
+
+    .quote-option ul li {
+        margin: 0.5rem 0;
+        font-size: 1em;
+        color: #333;
+    }
+
+    .quote-option ul li strong {
+        color: #4CAF50;
+    }
+
+    .quote-option label {
+        display: flex;
+        align-items: center;
+        font-size: 1em;
+        color: #333;
+        margin-top: 0.5rem;
+    }
+
+    .quote-option input[type="radio"] {
+        margin-right: 8px;
+        width: 16px;
+        height: 16px;
+        accent-color: #4CAF50;
+    }
+
+    .form-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 2rem;
+    }
+
+    .form-buttons button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+        text-align: center;
+    }
+
+    .form-buttons button:hover {
+        background-color: #45a049;
+    }
+
+    .form-buttons .btn {
+        display: inline-block;
+        background-color: #666;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1em;
+        text-align: center;
+    }
+
+    .form-buttons .btn:hover {
+        background-color: #555;
+    }
+
+    @media (max-width: 768px) {
+        .form-page {
+            margin: 1rem;
+            padding: 1rem;
+        }
+        .form-page h1 {
+            font-size: 1.6em;
+            padding: 8px 16px;
+        }
+        .form-page h1::after {
+            width: 40px;
+        }
+        .form-buttons {
+            flex-direction: column;
+            gap: 10px;
+        }
+        .quote-option {
+            padding: 1rem;
+        }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-page">
+    <h1>Step 7: Choose Coverage</h1>
+    <form action="submit.php" method="POST">
+      <div class="quote-option">
+        <h2>liability Only</h2>
+        <p>Paying less is your biggest priority</p>
+        <ul>
+          <li><strong>BI:</strong> $25K / $50K</li>
+          <li><strong>PD:</strong> $10K</li>
+          <li><strong>PIP:</strong> $50K</li>
+          <li><strong>Collision & Comprehensive Deductible:</strong> $1K</li>
+        </ul>
+        <label>
+          <input type="radio" name="coverage" value="liability Only" required>
+          Show quotes at this coverage
+        </label>
+      </div>
+
+      <div class="quote-option">
+        <h2>Balanced</h2>
+        <p>Balance between protection and price</p>
+        <ul>
+          <li><strong>BI:</strong> $50K / $100K</li>
+          <li><strong>PD:</strong> $50K</li>
+          <li><strong>PIP:</strong> $50K</li>
+          <li><strong>Collision & Comprehensive Deductible:</strong> $1K</li>
+        </ul>
+        <label>
+          <input type="radio" name="coverage" value="Balanced">
+          Show quotes at this coverage
+        </label>
+      </div>
+
+      <div class="quote-option">
+        <h2>Full Coverage</h2>
+        <p>You’re willing to pay for the best protection</p>
+        <ul>
+          <li><strong>BI:</strong> $100K / $300K</li>
+          <li><strong>PD:</strong> $50K</li>
+          <li><strong>PIP:</strong> $100K</li>
+          <li><strong>Collision & Comprehensive Deductible:</strong> $1K</li>
+        </ul>
+        <label>
+          <input type="radio" name="coverage" value="Full Coverage">
+          Show quotes at this coverage
+        </label>
+      </div>
+
+      <div class="form-buttons">
+        <a href="form6.php" class="btn">Back</a>
+        <button type="submit">See My Quotes</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
