@@ -34,11 +34,20 @@
       <label for="year">Year</label>
       <select name="year" id="year" required>
         <option value="">Select year</option>
-        <?php
-          for ($i = date("Y"); $i >= 1990; $i--) {
-            echo "<option value=\"$i\">$i</option>";
-          }
-        ?>
+        <script>
+            function selectYears(){
+                const yearSelect = document.getElementById("year");
+                const currentYear = new Date().getFullYear();
+                const startYear = 1990;
+                for(let i = currentYear: i >= startYear; i--){
+                    const option = document.createElement("option");
+                    option.value = i;
+                    option.text = i;
+                    yearSelect.appendChild(option);
+                }
+            }
+            window.onload = populateYears;
+        </script>
       </select>
 
       <label for="make">Make</label>
