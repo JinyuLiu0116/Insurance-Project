@@ -127,6 +127,11 @@ form input[type="number"] {
     text-align: center;
 }
 
+.form-buttons a{
+    color: white;
+    text-decoration: none;
+}
+
 .form-buttons button:hover {
     background-color: #45a049;
 }
