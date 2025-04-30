@@ -1,14 +1,3 @@
-<?php
-session_start();
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Save form1 
-  $_SESSION['year'] = $_POST['year'];
-  $_SESSION['make'] = $_POST['make'];
-  $_SESSION['model'] = $_POST['model'];
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
