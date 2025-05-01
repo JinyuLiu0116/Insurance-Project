@@ -1,14 +1,3 @@
-<?php
-session_start();
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $_SESSION['insured'] = $_POST['insured'];
-  $_SESSION['current_provider'] = $_POST['current_provider'] ?? '';
-  $_SESSION['years_insured'] = $_POST['years_insured'] ?? 0;
-  $_SESSION['monthly_payment'] = $_POST['monthly_payment'] ?? 0.00;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -188,7 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       <div class="form-buttons">
         <a href="form6.html" class="btn">Back</a>
-        <button type="submit">See My Quotes</button>
+        <button><a href="submit.html">See My Quotes</a></button>
       </div>
     </form>
   </div>
