@@ -1,13 +1,3 @@
-<?php
-session_start();
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $_SESSION['accident'] = $_POST['accident'];
-  $_SESSION['dui'] = $_POST['dui'];
-  $_SESSION['reckless'] = $_POST['reckless'];
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <div class="form-buttons">
         <a href="../index.html" class="home-link">← Back to Home</a>
         <a href="form5.html" class="btn">Back</a>
-        <button type="submit">Next</button>
+        <button><a href="form7.html">Next</a></button>
       </div>
     </form>
   </div>
