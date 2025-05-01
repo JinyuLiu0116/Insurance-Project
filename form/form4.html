@@ -1,18 +1,3 @@
-<?php
-session_start();
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $_SESSION['first_name'] = $_POST['first_name'];
-  $_SESSION['last_name'] = $_POST['last_name'];
-  $_SESSION['birthdate'] = $_POST['birthdate'];
-  $_SESSION['address'] = $_POST['address'];
-  $_SESSION['unit'] = $_POST['unit'];
-  $_SESSION['city'] = $_POST['city'];
-  $_SESSION['state'] = $_POST['state'];
-  $_SESSION['zip'] = $_POST['zip'];
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <div class="form-buttons">
         <a href="../index.html" class="home-link">← Back to Home</a>
         <a href="form3.html" class="btn">Back</a>
-        <button type="submit">Next</button>
+        <button><a href="form5.html">Next</a></button>
       </div>
     </form>
   </div>
