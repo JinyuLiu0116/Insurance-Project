@@ -1,14 +1,3 @@
-<?php
-session_start();
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $_SESSION['credit_score'] = $_POST['credit_score'];
-  $_SESSION['student'] = $_POST['student'];
-  $_SESSION['education'] = $_POST['education'];
-  $_SESSION['license_age'] = $_POST['license_age'];
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <div class="form-buttons">
         <a href="../index.html" class="home-link">← Back to Home</a>
         <a href="form4.html" class="btn">Back</a>
-        <button type="submit">Next</button>
+        <button><a href="form6.html">Next</a></button>
       </div>
     </form>
   </div>
